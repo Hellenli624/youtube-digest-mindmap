@@ -272,6 +272,8 @@ test("the side panel exposes a wired, cached Mind Map tab", () => {
   assert.match(js, /YTD_MINDMAP\.toSegments/);
   assert.match(js, /localizeMindmapTree/);
   assert.match(js, /translateInterfaceSegments\("mindmap", segments/);
+  // The root label is localized too, with the same [0] path as toSegments().
+  assert.match(js, /labelForMode\(tree, \[0\]\)/);
   assert.match(html, /id="mindmapFullViewBtn"/);
   assert.match(js, /openMindmapFullView/);
   assert.match(js, /mindmap\.html/);
@@ -296,6 +298,8 @@ test("the full-page mind map reuses the cached tree and exports it", () => {
   assert.match(js, /action: "seekTo"/);
   assert.match(js, /action: "translateContent"/);
   assert.match(js, /timestampSeconds: YTD_MINDMAP\.nodeTimestampSeconds/);
+  // The full-page view localizes the root label as well.
+  assert.match(js, /labelForMode\(tree, \[0\]\)/);
 });
 
 test("mind map generation reports an unusable provider response", async () => {

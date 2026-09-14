@@ -352,8 +352,12 @@ var YTD_MINDMAP = (() => {
   }
 
   /**
-   * Flattens every non-root node into translation segments keyed by its stable
-   * structural id, so the universal language control can reuse cached results.
+   * Flattens the tree into translation segments keyed by stable structural ids,
+   * so the universal language control can reuse cached results.
+   *
+   * The root IS included. It carries the video's topic, so skipping it left the
+   * centre of the map as the one node that ignored the language setting. Its
+   * path [0] is the same id buildLayout() gives the root.
    */
   function toSegments(tree) {
     const segments = [];
@@ -365,8 +369,7 @@ var YTD_MINDMAP = (() => {
       children.forEach((child, index) => walk(child, path.concat(index)));
     };
 
-    const children = Array.isArray(tree?.children) ? tree.children : [];
-    children.forEach((child, index) => walk(child, [0, index]));
+    walk(tree, [0]);
     return segments;
   }
 

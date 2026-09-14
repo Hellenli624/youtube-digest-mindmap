@@ -79,17 +79,26 @@ test("every visible parent is connected to each of its children", () => {
   );
 });
 
-test("translation segments use stable ids and skip the root", () => {
+test("translation segments use stable ids and include the root", () => {
   const segments = YTD_MINDMAP.toSegments(sampleTree);
 
   assert.deepEqual(
     segments.map((segment) => segment.id),
-    ["mindmap-0-0", "mindmap-0-0-0", "mindmap-0-0-1", "mindmap-0-1"],
+    ["mindmap-0", "mindmap-0-0", "mindmap-0-0-0", "mindmap-0-0-1", "mindmap-0-1"],
   );
   assert.deepEqual(
     segments.map((segment) => segment.text),
-    ["First theme", "Point A", "Point B", "Second theme"],
+    ["Caching", "First theme", "Point A", "Point B", "Second theme"],
   );
+});
+
+test("the root translation segment shares the layout root id", () => {
+  const layout = YTD_MINDMAP.buildLayout(sampleTree);
+  const [root] = YTD_MINDMAP.toSegments(sampleTree);
+
+  // Both layers must agree on the root id, otherwise the centre node's cached
+  // translation could never be looked up again.
+  assert.equal(root.id, YTD_MINDMAP.segmentId(layout.nodes[0].id));
 });
 
 test("the markdown outline keeps the hierarchy and timestamps", () => {

@@ -83,8 +83,12 @@ function localizeTree(tree, mode) {
   };
 
   const children = Array.isArray(tree.children) ? tree.children : [];
+  // Translate the root as well, matching the side panel, so the centre node
+  // cannot be the only label left in the original language.
+  const rootLabel = labelForMode(tree, [0]);
   return {
-    title: YTD_MINDMAP.nodeLabel(tree),
+    label: rootLabel,
+    title: rootLabel,
     children: children.map((child, index) => cloneNode(child, [0, index])),
   };
 }

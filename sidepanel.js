@@ -2387,8 +2387,14 @@ function localizeMindmapTree(tree, mode) {
   };
 
   const children = Array.isArray(tree.children) ? tree.children : [];
+  // The root is translated too: it carries the video's topic, so leaving it in
+  // English made the centre of the map the one node that ignored the language
+  // control. Path [0] is the id toSegments() and buildLayout() use for the root,
+  // so the same cached translation is reused.
+  const rootLabel = labelForMode(tree, [0]);
   return {
-    title: YTD_MINDMAP.nodeLabel(tree),
+    label: rootLabel,
+    title: rootLabel,
     children: children.map((child, index) => cloneNode(child, [0, index])),
   };
 }
