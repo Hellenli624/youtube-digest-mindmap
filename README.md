@@ -22,7 +22,9 @@ YouTube Digest is a bring-your-own-key project installed locally from GitHub. It
 
 A mind map view: a hierarchical tree of the speaker's actual arguments, with timestamps you can click to jump the video, the shared Original, Chinese, or bilingual setting, and a full-page view that copies to Markdown or exports to SVG.
 
-![Mind map full page view](mindmap-full-page.png)
+<img src="mindmap-side-panel-en.png" alt="Mind Map tab in the side panel" width="380">
+
+<img src="mindmap-full-page-en.png" alt="Full-page mind map with expand and collapse controls" width="900">
 
 ## New in v1.3.0
 
