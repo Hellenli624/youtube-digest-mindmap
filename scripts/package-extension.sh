@@ -13,9 +13,12 @@ command -v zip >/dev/null 2>&1 || {
 }
 
 release_files=()
+# Invoke the check through bash instead of executing it directly: the script
+# also runs on checkouts that lost the executable bit (e.g. a source ZIP
+# downloaded from GitHub), where a direct call fails with "Permission denied".
 while IFS= read -r file; do
   [[ -n "$file" ]] && release_files+=("$file")
-done < <("$check_script" --print-files)
+done < <(bash "$check_script" --print-files)
 
 if ((${#release_files[@]} == 0)); then
   printf 'Packaging failed: release allowlist is empty\n' >&2
