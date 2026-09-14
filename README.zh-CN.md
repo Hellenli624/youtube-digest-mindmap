@@ -24,7 +24,7 @@ YouTube Digest 是一个需要自行提供 API Key 的开源项目，通过 GitH
 
 一个思维导图视图：把整个视频整理成层级树，节点承载真正的观点而不只是标题；点击带时间戳的节点可跳转视频；跟随 Original / 中文 / 双语设置；并提供可复制 Markdown 或导出 SVG 的全屏大图。
 
-<img src="mindmap-side-panel-zh-CN.png" alt="侧边栏中的思维导图标签页" width="380">
+<img src="mindmap-side-panel-zh-CN.png" alt="侧边栏中的思维导图标签页" width="900">
 
 <img src="mindmap-full-page-zh-CN.png" alt="全屏思维导图，含展开与收起控制" width="900">
 
