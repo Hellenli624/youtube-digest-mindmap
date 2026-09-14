@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Digest · Mind Map</title>
+    <link rel="stylesheet" href="mindmap.css" />
+  </head>
+  <body>
+    <header class="mindmap-header">
+      <div class="mindmap-heading">
+        <h1 class="mindmap-title" id="mindmapTitle">Mind Map</h1>
+        <p class="mindmap-subtitle" id="mindmapSubtitle"></p>
+      </div>
+      <div class="mindmap-toolbar">
+        <button class="mindmap-btn" id="expandAllBtn" type="button">
+          Expand all
+        </button>
+        <button class="mindmap-btn" id="collapseAllBtn" type="button">
+          Collapse all
+        </button>
+        <button class="mindmap-btn" id="copyMarkdownBtn" type="button">
+          Copy Markdown
+        </button>
+        <button class="mindmap-btn" id="exportSvgBtn" type="button">
+          Export SVG
+        </button>
+      </div>
+    </header>
+
+    <main class="mindmap-main">
+      <div class="mindmap-body" id="mindmapBody"></div>
+      <p class="mindmap-empty" id="mindmapEmpty"></p>
+    </main>
+
+    <script src="mindmap-render.js"></script>
+    <script src="mindmap.js"></script>
+  </body>
+</html>

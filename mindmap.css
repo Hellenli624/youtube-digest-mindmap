@@ -1,0 +1,156 @@
+/*
+ * FULL-PAGE MIND MAP STYLES
+ *
+ * Self-contained on purpose: this page is opened as its own tab, so it does not
+ * load sidepanel.css. The tokens mirror the side panel palette so the two views
+ * feel like one product.
+ */
+:root {
+  --bg: #f7f3ec;
+  --surface: #ffffff;
+  --surface-raised: #fbf8f2;
+  --border: #ece5d9;
+  --border-heavy: #ddd4c4;
+  --text: #2e2a24;
+  --text-secondary: #6b6258;
+  --text-muted: #a39a8d;
+  --accent: #c8674f;
+  --accent-hover: #b25742;
+  --accent-dim: rgba(200, 103, 79, 0.1);
+  --sage-dim: rgba(124, 139, 111, 0.14);
+  --shadow-sm: 0 1px 3px rgba(90, 80, 60, 0.06);
+  --r-md: 12px;
+  --r-pill: 999px;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mindmap-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.mindmap-heading {
+  min-width: 0;
+}
+
+.mindmap-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.mindmap-subtitle {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.mindmap-toolbar {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mindmap-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font: 600 12px/1.4 var(--font-body);
+  cursor: pointer;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.mindmap-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.mindmap-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mindmap-main {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+}
+
+.mindmap-body {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.mindmap-empty {
+  display: none;
+  max-width: 480px;
+  margin: 56px auto;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Base colours live in the SVG markup itself (see mindmap-render.js) so an
+   exported file keeps its styling without a stylesheet. Only interaction
+   states belong here. */
+.mindmap-svg {
+  display: block;
+}
+
+.mindmap-node {
+  cursor: pointer;
+}
+
+.mindmap-node.has-time:hover > .mindmap-node-box {
+  fill: var(--accent-dim);
+  stroke: var(--accent);
+}
+
+.mindmap-toggle {
+  cursor: pointer;
+}
+
+.mindmap-toggle:hover {
+  fill: var(--accent-dim);
+}
